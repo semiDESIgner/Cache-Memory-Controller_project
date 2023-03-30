@@ -1,0 +1,420 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[16:21:14.346489] Configured Lic search path (21.01-s002): 5280@cadenceserver
+
+Version: 21.14-s082_1, built Thu Jun 23 02:02:08 PDT 2022
+Options: 
+Date:    Fri Mar 10 16:21:14 2023
+Host:    cad14 (x86_64 w/Linux 4.18.0-425.3.1.el8.x86_64) (4cores*4cpus*1physical cpu*Intel(R) Core(TM) i3-8100T CPU @ 3.10GHz 6144KB) (7768568KB)
+PID:     11142
+OS:      Red Hat Enterprise Linux release 8.7 (Ootpa)
+
+
+[16:21:14.507866] Periodic Lic check successful
+[16:21:14.507875] Feature usage summary:
+[16:21:14.507875] Genus_Synthesis
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (23 seconds elapsed).
+
+WARNING: This version of the tool is 260 days old.
+@genus:root: 1> source genus.tcl
+File 'genus.tcl' does not exist.
+@genus:root: 2> source genus.tcl
+Sourcing './genus.tcl' (Fri Mar 10 16:24:11 IST 2023)...
+#@ Begin verbose source ./genus.tcl
+@file(genus.tcl) 2: read_libs /home/install/FOUNDRY/digital/90nm/dig/lib/slow.lib
+
+Threads Configured:3
+
+  Message Summary for Library slow.lib:
+  *************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  Missing library level attribute. [LBR-516]: 1
+  *************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+@file(genus.tcl) 4: read_hdl cache_controller.v
+@file(genus.tcl) 5: elaborate
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'cache_controller' from file 'cache_controller.v'.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'cache_controller'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: post_elab
+--------------------------------------------------------
+| Trick             | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------------
+| ume_constant_bmux |       0 |       0 |         7.00 | 
+--------------------------------------------------------
+Starting clip mux common data inputs [v1.0] (stage: post_elab, startdef: cache_controller, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.005s)
+Starting clip the non-user hierarchies [v2.0] (stage: post_elab, startdef: cache_controller, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.002s)
+
+Stage: post_elab
+---------------------------------------------------------
+| Transform          | Accepts | Rejects | Runtime (ms) | 
+---------------------------------------------------------
+| hlo_clip_mux_input |       0 |       0 |         5.00 | 
+| hlo_clip           |       0 |       0 |         2.00 | 
+---------------------------------------------------------
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+@file(genus.tcl) 7: read_sdc ip_sdc.sdc
+Error   : Unknown TCL command in the SDC file. [SDC-234] [read_sdc]
+        : Invalid command 'set_clock_uncertainity'
+        : The 'read_sdc' command encountered a problem while trying to evaluate a command in the SDC file.
+Error   : Could not interpret SDC command. [SDC-202] [read_sdc]
+        : The TCL interpreter encountered the following error while processing line '4' of the SDC file 'ip_sdc.sdc': invalid command name 'set_clock_uncertainity'.
+        : The 'read_sdc' command encountered a problem while trying to evaluate an SDC command. This SDC command will be added to the Tcl variable $::dc::sdc_failed_commands.
+Statistics for commands executed by read_sdc:
+ "all_inputs"               - successful      1 , failed      0 (runtime  0.00)
+ "create_clock"             - successful      1 , failed      0 (runtime  0.01)
+ "get_clocks"               - successful     16 , failed      0 (runtime  0.00)
+ "get_ports"                - successful     16 , failed      0 (runtime  0.01)
+ "set_clock_transition"     - successful      2 , failed      0 (runtime  0.00)
+ "set_input_delay"          - successful      7 , failed      0 (runtime  0.00)
+ "set_input_transition"     - successful      1 , failed      0 (runtime  0.03)
+ "set_output_delay"         - successful      7 , failed      0 (runtime  0.00)
+Warning : One or more commands failed when these constraints were applied. [SDC-209]
+        : The 'read_sdc' command encountered a problem while processing commands.
+        : You can examine the failed commands or save them to a file by querying the Tcl variable $::dc::sdc_failed_commands.
+read_sdc completed in 00:00:00 (hh:mm:ss)
+@file(genus.tcl) 9: set_db syn_generic_effort medium
+  Setting attribute of root '/': 'syn_generic_effort' = medium
+@file(genus.tcl) 10: set_db syn_map_effort medium
+  Setting attribute of root '/': 'syn_map_effort' = medium
+@file(genus.tcl) 11: set_db syn_opt_effort medium
+  Setting attribute of root '/': 'syn_opt_effort' = medium
+@file(genus.tcl) 13: syn_generic
+
+Stage: pre_early_cg
+------------------------------------------------
+| Transform | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------
+------------------------------------------------
+##Generic Timing Info for library domain: _default_ typical gate delay: 127.0 ps std_slew: 15.5 ps std_load: 7.0 fF
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: cache_controller, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.958s)
+
+Stage: pre_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |       958.00 | 
+------------------------------------------------------
+Info    : Deleting instances not driving any primary outputs. [GLO-34]
+        : Deleting 12 hierarchical instances.
+        : Optimizations such as constant propagation or redundancy removal could change the connections so a hierarchical instance does not drive any primary outputs anymore. To see the list of deleted hierarchical instances, set the 'information_level' attribute to 2 or above. If the message is truncated set the message attribute 'truncate' to false to see the complete list. To prevent this optimization, set the 'delete_unloaded_insts' root/subdesign attribute to 'false' or 'preserve' instance attribute to 'true'.
+Info    : Synthesizing. [SYNTH-1]
+        : Synthesizing 'cache_controller' to generic gates using 'medium' effort.
+PBS_Generic-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:01:09(00:03:46) |  00:00:00(00:00:00) |   0.0(  0.0) |   16:25:09 (Mar10) |  603.9 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+TNS Restructuring config: no_value at stage: generic applied.
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed generic optimization to kick in.
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: cache_controller, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.291s)
+
+Stage: pre_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |       291.00 | 
+------------------------------------------------------
+Info    : Deleting instances not driving any primary outputs. [GLO-34]
+        : Deleting 3 hierarchical instances.
+Starting mux data reorder optimization [v1.0] (stage: post_to_gen_setup, startdef: cache_controller, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.218s)
+
+Stage: post_to_gen_setup
+------------------------------------------------------
+| Transform       | Accepts | Rejects | Runtime (ms) | 
+------------------------------------------------------
+| hlo_mux_reorder |       0 |       0 |       218.00 | 
+------------------------------------------------------
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: pre_hlo_rtlopt
+--------------------------------------------
+| Trick | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------
+--------------------------------------------
+Starting infer macro optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed infer macro optimization (accepts: 0, rejects: 21, runtime: 0.095s)
+Starting decode mux sandwich optimization [v2.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed decode mux sandwich optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting decode mux optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed decode mux optimization (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting chop wide muxes [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed chop wide muxes (accepts: 0, rejects: 0, runtime: 0.006s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.005s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.015s)
+Starting constant-data mux optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed constant-data mux optimization (accepts: 0, rejects: 0, runtime: 0.006s)
+Starting chain-to-tree inequality transform [v2.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed chain-to-tree inequality transform (accepts: 0, rejects: 0, runtime: 0.117s)
+Starting reconvergence optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed reconvergence optimization (accepts: 0, rejects: 0, runtime: 0.004s)
+Starting logic restructure optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed logic restructure optimization (accepts: 0, rejects: 0, runtime: 0.037s)
+Starting common select mux optimization [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed common select mux optimization (accepts: 0, rejects: 0, runtime: 0.014s)
+Starting identity transform [v3.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed identity transform (accepts: 0, rejects: 0, runtime: 0.027s)
+Starting reduce operator chain [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed reduce operator chain (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.005s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.017s)
+Starting optimize datapath elements [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed optimize datapath elements (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting datapath recasting [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed datapath recasting (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting clip mux common data inputs [v1.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.004s)
+Starting clip the non-user hierarchies [v2.0] (stage: pre_rtlopt, startdef: cache_controller, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.002s)
+
+Stage: pre_rtlopt
+----------------------------------------------------------------
+| Transform                 | Accepts | Rejects | Runtime (ms) | 
+----------------------------------------------------------------
+| hlo_infer_macro           |       0 |      21 |        95.00 | 
+| hlo_decode_mux_sandwich   |       0 |       0 |         1.00 | 
+| hlo_mux_decode            |       0 |       0 |         1.00 | 
+| hlo_chop_mux              |       0 |       0 |         6.00 | 
+| hlo_mux_cascade_opt       |       0 |       0 |         5.00 | 
+| hlo_mux_consolidation     |       0 |       0 |        15.00 | 
+| hlo_constant_mux_opt      |       0 |       0 |         6.00 | 
+| hlo_inequality_transform  |       0 |       0 |       117.00 | 
+| hlo_reconv_opt            |       0 |       0 |         4.00 | 
+| hlo_restructure           |       0 |       0 |        37.00 | 
+| hlo_common_select_muxopto |       0 |       0 |        14.00 | 
+| hlo_identity_transform    |       0 |       0 |        27.00 | 
+| hlo_reduce_operator_chain |       0 |       0 |         1.00 | 
+| hlo_mux_cascade_opt       |       0 |       0 |         5.00 | 
+| hlo_mux_consolidation     |       0 |       0 |        17.00 | 
+| hlo_optimize_datapath     |       0 |       0 |         1.00 | 
+| hlo_datapath_recast       |       0 |       0 |         1.00 | 
+| hlo_clip_mux_input        |       0 |       0 |         4.00 | 
+| hlo_clip                  |       0 |       0 |         2.00 | 
+----------------------------------------------------------------
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+
+Stage: post_hlo_rtlopt
+--------------------------------------------------
+| Trick       | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------
+| ume_runtime |       2 |       0 |         2.00 | 
+| ume_runtime |       2 |       0 |         1.00 | 
+--------------------------------------------------
+Number of big hc bmuxes before = 2
+Info    : Pre-processed datapath logic. [DPOPT-6]
+        : No pre-processing optimizations applied to datapath logic in 'cache_controller'.
+Info    : Optimizing datapath logic. [DPOPT-1]
+        : Optimizing datapath logic in 'cache_controller'.
+Info    : Implementing datapath configurations. [DPOPT-3]
+        : Implementing datapath configurations for 'CDN_DP_region_0_0'
+CSAGen Prep Share:0 Re-Write:0 Speculation: 0
+MaxCSA: Successfully built Maximal CSA Expression Expr0
+CDN_DP_region_0_0 level = 0 loads = 0 drivers = 0
+CDN_DP_region_0_0_c0 in cache_controller: area: 21010789260 ,dp = 9 mux = 45 sg = slow         worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ skipped
+CDN_DP_region_0_0_c1 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = fast         worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c2 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_slow    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c3 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c4 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c5 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c6 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+CDN_DP_region_0_0_c7 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+ is current best
+Best config: CDN_DP_region_0_0_c7 in cache_controller: area: 20747582205 ,dp = 3 mux = 43 sg = very_fast    worst_clk_period: -1.0000 
+    wns: 14752  norm_wns:  -1.0000 
+    fail_endp: -1 
+    tns:  3259470  tns_per_endp:  -1.0000   norm_tns_per_endp:  -1.0000 
+    tns_sense_max:  -1.0000  tns_sense_avg:  -1.0000   tns_sense_num: -1
+  Smallest config area : 20747582205.  Fastest config wns;  14752
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>Summary table of configs (Best config is CDN_DP_region_0_0_c7)
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>                     0                  1                  2                  3                  4                  5                  6                  7            
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>           Area      21010789260        20747582205        20747582205        20747582205        20747582205        20747582205        20747582205        20747582205  
+##>            WNS         -1475.20           -1475.20           -1475.20           -1475.20           -1475.20           -1475.20           -1475.20           -1475.20  
+##>            TNS          3259470            3259470            3259470            3259470            3259470            3259470            3259470            3259470  
+##>    Num Rewrite                0                  2                  2                  2                  2                  2                  2                  2  
+##>     Num Factor                0                  0                  0                  0                  0                  0                  0                  0  
+##>      Num Share                0                  0                  0                  0                  0                  0                  0                  0  
+##>   Num CmultCse                0                  0                  0                  0                  0                  0                  0                  0  
+##>   Num Downsize                0                  0                  0                  0                  0                  0                  0                  0  
+##>  Num Speculate                0                  0                  0                  0                  0                  0                  0                  0  
+##>     Runtime(s)                0                  0                  0                  0                  0                  0                  0                  0  
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>
+##>
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>Optimization Step DEBUG Table for config CDN_DP_region_0_0_c7
+##>
+##>                          Step                        Area   ( % Chg)        WNS (Change)        TNS (Change)          Runtime (s)        Comment                   
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>EquationExtraction              START            21010789260 (      )    -1475.20 (        )       3259470 (        )              
+##> rewrite                        START            21346473620 ( +1.60)    -1885.50 ( -410.30)       3858890 (  599420)              (a,ar) Expr0_from --> Expr0_to
+##>                                  END            23753483065 (+11.28)    -1895.30 (   -9.80)       3890054 (   31164)           0  
+##>                                  END            21010789260 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>createMaxCarrySave              START            21010789260 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##> datapath_rewrite_one_def       START            21010789260 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>  rewrite                       START            21010789260 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              (a,csaa) dissolve_1bit_const_2x1mux_from --> dissolve_1bit_const_2x1mux_to
+##>                                  END            20999345475 ( -0.05)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>  rewrite                       START            20999345475 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              (a,csaa) dissolve_1bit_const_2x1mux_from --> dissolve_1bit_const_2x1mux_to
+##>                                  END            20987901690 ( -0.05)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20987901690 ( -0.11)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##> speculate_in_gdef              START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>  pre_speculate_mux_merge       START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##> csa_opto                       START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20987901690 ( -0.11)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>canonicalize_by_names           START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>datapath_rewrite_post_csa_one_  START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>datapath_csa_factoring_one_gde  START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>dpopt_share_one_def             START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>datapath_rewrite_post_share     START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>dp_combine_const_mult_with_com  START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>speculate_in_gdef               START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##> pre_speculate_mux_merge        START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>dp_operator_level_decompositio  START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>selective_flatten_dp_config     START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>createMaxCarrySave              START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##> datapath_rewrite_one_def       START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>  fast_cse_elim                 START            20987901690 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20751396800 ( -1.13)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>  fast_cse_elim                 START            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20751396800 ( -1.13)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##> speculate_in_gdef              START            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>  pre_speculate_mux_merge       START            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##> csa_opto                       START            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20751396800 ( -1.13)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>context_based_simplify          START            20751396800 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20747582205 ( -0.02)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>group_csa_final_adder_dp        START            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>dpopt_flatten_critical_muxes_i  START            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>speculate_in_gdef               START            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##> pre_speculate_mux_merge        START            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>                                  END            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>create_score                    START            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)              
+##>                                  END            20747582205 ( +0.00)    -1475.20 (   +0.00)       3259470 (       0)           0  
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+Committed config: CDN_DP_region_0_0_c7
+Info    : Done implementing datapath configurations. [DPOPT-4]
+        : Selected 'very_fast' configuration 7 for module 'CDN_DP_region_0_0'.
+          Optimizations applied to 'very_fast' configuration:
+            rewriting(2), factoring(0), sharing(0), cmultcse(0), downsizing(0), speculation(0)
+Info    : Done optimizing datapath logic. [DPOPT-2]
+        : Done optimizing datapath logic in 'cache_controller'.
+Number of big hc bmuxes after = 2
+Starting logic reduction [v1.0] (stage: post_rtlopt, startdef: cache_controller, recur: true)
+Completed logic reduction (accepts: 0, rejects: 0, runtime: 0.001s)
+Starting mux data reorder optimization [v1.0] (stage: post_rtlopt, startdef: cache_controller, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.205s)
+
+Stage: post_rtlopt
+----------------------------------------------------------
+| Transform           | Accepts | Rejects | Runtime (ms) | 
+----------------------------------------------------------
+| hlo_logic_reduction |       0 |       0 |         1.00 | 
+| hlo_mux_reorder     |       0 |       0 |       205.00 | 
+----------------------------------------------------------
+Info    : Deleting instances not driving any primary outputs. [GLO-34]
+        : Deleting 4223 sequential instances.
+Info    : Deleting instances not driving any primary outputs. [GLO-34]
+        : Deleting 4096 hierarchical instances.
